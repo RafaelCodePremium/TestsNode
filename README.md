@@ -1,4 +1,4 @@
-function generateDto(jsonObject: any, className: string, generatedClasses: Set<string> = new Set()) {
+generateDto(jsonObject: any, className: string, generatedClasses: Set<string> = new Set()) {
   let dtoContent = `import { ApiProperty } from '@nestjs/swagger';\n\n`;
   dtoContent += `export class ${className} {\n`;
 
@@ -38,30 +38,3 @@ function generateDto(jsonObject: any, className: string, generatedClasses: Set<s
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-// Exemplo de JSON de entrada com múltiplos objetos `month`
-const jsonObject = {
-  "month1": {
-    "categories": ["pasta1", "pasta2"],
-    "series": [
-      {
-        "name": "teste",
-        "type": "column",
-        "data": [12, 15, 16]
-      }
-    ]
-  },
-  "month2": {
-    "categories": ["pasta1", "pasta2", "pasta3"],
-    "series": [
-      {
-        "name": "teste",
-        "type": "column",
-        "data": [20, 22, 24]
-      }
-    ]
-  }
-};
-
-// Gerar DTOs e exibir no console
-generateDto(jsonObject, 'PrincipalDtoResponseDto');
